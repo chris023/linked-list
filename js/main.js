@@ -34,12 +34,17 @@ function createListHTML(arr) {
 }
 
 function createReadListeners() {
-  let readButton = document.querySelectorAll('.bookmark-read')[readButtonArray.length];
-  readButtonArray.push(readButton);
-  readButton.addEventListener('click', function() {
-    readButton.classList.toggle('read');
-  });
+  readButtonArray = document.querySelectorAll('.bookmark-read');
+  for (let i = 0; i < readButtonArray.length; i++) {
+    readButtonArray[i].addEventListener('click', function() {
+      this.classList.toggle('read');
+    });
+  }
 }
+
+
+
+
 
 function createDeleteListeners() {
   let deleteButton = document.querySelectorAll('.bookmark-delete')[deleteButtonArray.length];
