@@ -1,3 +1,75 @@
-.read {
-  color: red;
+*{
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
 }
+
+.input-section {
+  float: left;
+  width: 50%;
+  background-color: #455A64;
+  color: white;
+}
+
+.list-section {
+  background-color: #CFD8DC;
+  float: right;
+  width: 50%;
+}
+
+.logo {
+  width: 1.5em;
+}
+
+bookmark-input {
+  display: block;
+}
+
+.bookmark {
+  background-color: #ffffff;
+  margin: 2%;
+  width: 92%;
+  border: solid 2px #607D8B;
+  padding: 2%;
+}
+
+.bookmark-title {
+  color: #455A64;
+}
+
+.bookmark-url {
+  display: block;
+  color: #607D8B;
+  border-bottom: solid 2px #CFD8DC;
+  border-top: solid 2px #CFD8DC;
+}
+
+.bookmark-links{
+  text-decoration: underline;
+  text-decoration-color: #F2F4F4;
+}
+
+.css-read-and-delete {
+  color: #455A64;
+}
+
+.bookmark-read {
+  display: inline-block;
+  /* float: left; */
+}
+
+.bookmark-delete {
+  display: inline-block;
+  float: right;
+}
+
+.css-links:hover{
+  color: #455A64;
+  text-decoration: underline;
+  text-decoration-color: #FFC107;
+}
+
+.read {
+  background-color: #F2F4F4;
+}
+
+
