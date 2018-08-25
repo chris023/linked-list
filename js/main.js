@@ -37,7 +37,7 @@ function createReadListeners() {
   readButtonArray = document.querySelectorAll('.bookmark-read');
   for (let i = 0; i < readButtonArray.length; i++) {
     readButtonArray[i].addEventListener('click', function() {
-      this.classList.toggle('read');
+      document.querySelectorAll('.bookmark')[i].classList.toggle('read');
     });
   }
 }
