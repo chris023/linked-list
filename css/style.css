@@ -3,9 +3,25 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+body{
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  min-height: 100vh;
+}
+
+.title {
+  text-align: center;
+}
+
+.input-form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .input-section {
   float: left;
-  width: 50%;
+  width: 100%;
   background-color: #455A64;
   color: white;
 }
@@ -13,7 +29,7 @@
 .list-section {
   background-color: #CFD8DC;
   float: right;
-  width: 50%;
+  width: 100%;
 }
 
 .logo {
@@ -49,7 +65,9 @@ bookmark-input {
 }
 
 .css-read-and-delete {
+  border: none;
   color: #455A64;
+  background-color: transparent;
 }
 
 .bookmark-read {
@@ -72,4 +90,9 @@ bookmark-input {
   background-color: #F2F4F4;
 }
 
+@media screen and (max-width: 600px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+}
 
