@@ -42,22 +42,15 @@ function createReadListeners() {
   }
 }
 
-
-
-
-
 function createDeleteListeners() {
-  let deleteButton = document.querySelectorAll('.bookmark-delete')[deleteButtonArray.length];
-  deleteButtonArray.push(deleteButton);
-  let currentArrayLength = deleteButtonArray.length;
-  deleteButtonArray[currentArrayLength - 1].addEventListener('click', function(currentArrayLength) {
-    let index = deleteButtonArray.findIndex(function(element) {
-      return element === deleteButton;
+  deleteButtonArray = document.querySelectorAll('.bookmark-delete');
+  for (let i = 0; i < deleteButtonArray.length; i++) {
+    deleteButtonArray[i].addEventListener('click', function() {
+      bookmarksHTMLArray.splice(i, 1);
+      createListHTML(bookmarksHTMLArray);
+      createReadListeners();
+      createDeleteListeners();
     });
-    bookmarksHTMLArray.splice(index, 1);
-    readButtonArray.splice(index, 1);
-    deleteButtonArray.splice(index, 1);
-    createListHTML(bookmarksHTMLArray);
-  });
+  }
 }
 
