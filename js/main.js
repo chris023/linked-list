@@ -19,9 +19,9 @@ enterButton.addEventListener('click', function(){
 function createBookmarkHTML(newTitle, newUrl){
   bookmarksHTMLArray.push(`<article class='bookmark'>
   <h1 class='bookmark-title'>${newTitle}</h1>
-  <a class='bookmark-url'>${newUrl}</a>
-  <p class='bookmark-read'>Read</p>
-  <p class='bookmark-delete'>Delete</p>
+  <a class='bookmark-url css-links' href="${newUrl}">${newUrl}</a>
+  <p class='bookmark-read css-links css-read-and-delete'>Read</p>
+  <p class='bookmark-delete css-links css-read-and-delete'>Delete</p>
   </article>`);
 }
 

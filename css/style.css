@@ -5,12 +5,13 @@
 
 body{
   display: grid;
-  grid-template-columns: repeat(2, 50%);
+  grid-template-columns: repeat(2, 1fr);
   min-height: 100vh;
 }
 
 .title {
   text-align: center;
+  font-size: 60px;
 }
 
 .input-form {
@@ -20,6 +21,7 @@ body{
 }
 
 .input-section {
+  padding: 30% 0;
   float: left;
   width: 100%;
   background-color: #455A64;
@@ -36,8 +38,27 @@ body{
   width: 1.5em;
 }
 
-bookmark-input {
+.enter-button {
   display: block;
+  margin: 5% auto;
+  min-width: 91.5%;
+  border: 0;
+  background-color: #ffc107;
+  color: #ffffff;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.enter-button:hover {
+  background-color: #ffd773;
+}
+
+.bookmark-input {
+  display: block;
+  margin: 5% auto;
+  min-width: 90%;
+  font-size: 20px;
 }
 
 .bookmark {
@@ -45,7 +66,7 @@ bookmark-input {
   margin: 2%;
   width: 92%;
   border: solid 2px #607D8B;
-  padding: 2%;
+  padding: 4px 12px;
 }
 
 .bookmark-title {
@@ -55,16 +76,19 @@ bookmark-input {
 .bookmark-url {
   display: block;
   color: #607D8B;
+  padding: 10px 0;
   border-bottom: solid 2px #CFD8DC;
   border-top: solid 2px #CFD8DC;
 }
 
-.bookmark-links{
+.css-links{
   text-decoration: underline;
   text-decoration-color: #F2F4F4;
 }
 
 .css-read-and-delete {
+  font-size: 14px;
+  margin: 4px 0;
   border: none;
   color: #455A64;
   background-color: transparent;
@@ -76,7 +100,6 @@ bookmark-input {
 }
 
 .bookmark-delete {
-  display: inline-block;
   float: right;
 }
 
