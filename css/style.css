@@ -1,5 +1,4 @@
 *{
-  margin: 0;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -7,11 +6,13 @@ body{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   min-height: 100vh;
+  margin: 0;
 }
 
 .title {
   text-align: center;
   font-size: 60px;
+  margin: 0 3%;
 }
 
 .input-form {
@@ -41,32 +42,55 @@ body{
 .enter-button {
   display: block;
   margin: 5% auto;
-  min-width: 91.5%;
+  min-width: 90%;
   border: 0;
   background-color: #ffc107;
   color: #ffffff;
   padding: 5px;
   font-size: 18px;
   font-weight: 800;
+  outline: none;
+  transition: .5s;
 }
 
 .enter-button:hover {
   background-color: #ffd773;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.enter-button:disabled {
+  background-color: #ffd773;
+  cursor: auto;
+  transition: .5s;
 }
 
 .bookmark-input {
+  box-sizing: border-box;
   display: block;
   margin: 5% auto;
   min-width: 90%;
   font-size: 20px;
+  padding: 1% 1% 1% 2%;
+  outline: none;
+}
+
+.bookmark-input::placeholder {
+  color: #CCC;
 }
 
 .bookmark {
+  box-sizing: border-box;
   background-color: #ffffff;
-  margin: 2%;
-  width: 92%;
+  margin: 3% 2%;
+  width: 96%;
   border: solid 2px #607D8B;
   padding: 4px 12px;
+  transition:.5s;
+}
+
+.bookmark-read {
+  transition: .5s;
 }
 
 .bookmark-title {
@@ -84,6 +108,7 @@ body{
 .css-links{
   text-decoration: underline;
   text-decoration-color: #F2F4F4;
+  outline: none;
 }
 
 .css-read-and-delete {
@@ -107,13 +132,20 @@ body{
   color: #455A64;
   text-decoration: underline;
   text-decoration-color: #FFC107;
+  cursor: pointer;
 }
 
 .read {
   background-color: #F2F4F4;
+  transition: .5s;
 }
 
-@media screen and (max-width: 600px) {
+.read .bookmark-read {
+  color: red;
+  transition: .5s;
+}
+
+@media screen and (max-width: 700px) {
   body {
     grid-template-columns: 1fr;
   }

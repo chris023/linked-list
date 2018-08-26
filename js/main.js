@@ -6,9 +6,26 @@ let readButtonArray = [];
 let deleteButtonArray = [];
 let bookmarksHTMLArray = [];
 
+titleInput.addEventListener('input', function() {
+  if (!!titleInput.value) {
+    enterButton.disabled = false;
+  } else
+  enterButton.disabled = true;
+});
+
+urlInput.addEventListener('input', function() {
+  if (!!urlInput.value) {
+    enterButton.disabled = false;
+  } else
+  enterButton.disabled = true;
+});
+
 enterButton.addEventListener('click', function(){
   newTitle = titleInput.value;
   newUrl = urlInput.value;
+  if (!newTitle || !newUrl) {
+    alert('Please enter a Title and URL for your new bookmark!');
+  } else
   createBookmarkHTML(newTitle, newUrl);
   createListHTML(bookmarksHTMLArray);
   createReadListeners();
@@ -36,7 +53,7 @@ function createListHTML(arr) {
 function createReadListeners() {
   readButtonArray = document.querySelectorAll('.bookmark-read');
   for (let i = 0; i < readButtonArray.length; i++) {
-    readButtonArray[i].addEventListener('click', function() {
+    readButtonArray[i].addEventListener('click', function() { 
       document.querySelectorAll('.bookmark')[i].classList.toggle('read');
     });
   }
