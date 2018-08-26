@@ -2,10 +2,7 @@ const titleInput = document.querySelector('.title-input');
 const urlInput = document.querySelector('.url-input');
 const enterButton = document.querySelector('.enter-button');
 const listSection = document.querySelector('.list-section');
-let readButtonArray = [];
-let deleteButtonArray = [];
 let articleId = 0;
-// let bookmarksHTMLArray = [];
 
 titleInput.addEventListener('input', function() {
   if (!!titleInput.value) {
@@ -28,9 +25,6 @@ enterButton.addEventListener('click', function(event){
     alert('Please enter a Title and URL for your new bookmark!');
   } else
   createBookmarkHTML(newTitle, newUrl);
-  // createListHTML(bookmarksHTMLArray);
-  // createReadListeners();
-  // createDeleteListeners();
   event.preventDefault();
 });
 
@@ -49,9 +43,10 @@ function createBookmarkHTML(newTitle, newUrl) {
       <h1 class='bookmark-title'>${newTitle}</h1>
       <a class='bookmark-url css-links' href="${newUrl}">${newUrl}</a>
       <p class='bookmark-read css-links css-read-and-delete' id='read${articleId}'>Read</p>
-      <p class='bookmark-delete css-links css-read-and-delete'>Delete</p>
+      <p class='bookmark-delete css-links css-read-and-delete' id='delete${articleId}'>Delete</p>
     </article>`);
   createReadListener();
+  createDeleteListener();
   articleId++;
 }
 
@@ -80,16 +75,24 @@ function createReadListener() {
   });
 }
 
-function createDeleteListeners() {
-  let articles = document.querySelectorAll('.bookmark');
-  deleteButtonArray = document.querySelectorAll('.bookmark-delete');
-  for (let i = 0; i < deleteButtonArray.length; i++) {
-    deleteButtonArray[i].addEventListener('click', function() { 
-      // bookmarksHTMLArray.splice(i, 1);
-      // createListHTML(bookmarksHTMLArray);
-      createReadListeners();
-      createDeleteListeners();
-    });
-  }
+function createDeleteListener() {
+  let deleteButton = document.querySelector(`#delete${articleId}`);
+  let bookmark = document.querySelector(`#bookmark${articleId}`);
+  deleteButton.addEventListener('click', function() {
+    bookmark.remove();
+  });
 }
+
+// function createDeleteListeners() {
+//   let articles = document.querySelectorAll('.bookmark');
+//   deleteButtonArray = document.querySelectorAll('.bookmark-delete');
+//   for (let i = 0; i < deleteButtonArray.length; i++) {
+//     deleteButtonArray[i].addEventListener('click', function() { 
+//       // bookmarksHTMLArray.splice(i, 1);
+//       // createListHTML(bookmarksHTMLArray);
+//       createReadListeners();
+//       createDeleteListeners();
+//     });
+//   }
+// }
 
