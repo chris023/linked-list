@@ -29,6 +29,10 @@ enterButton.addEventListener('click', function(event){
 });
 
 function createBookmarkHTML(newTitle, newUrl) {
+  if(articleId === 0){
+    listSection.innerHTML = '';
+  }
+
   listSection.insertAdjacentHTML('beforeend', 
     `<article class='bookmark' id='bookmark${articleId}'>
       <h1 class='bookmark-title'>${newTitle}</h1>
