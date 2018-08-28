@@ -189,6 +189,21 @@ header button:hover {
   font-weight: 800;
 }
 
+.animate-delete {
+  animation: delete 2s;
+}
+
+@keyframes delete {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(50vw);
+    opacity: 0;
+  }
+}
+
 @media screen and (max-width: 800px) {
   body {
     grid-template-columns: 1fr;

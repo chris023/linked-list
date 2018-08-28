@@ -71,7 +71,8 @@ function createDeleteListener() {
       unreadBookmarks--;
     }
     totalBookmarks--;
-    bookmark.remove();
+    bookmark.classList.toggle('animate-delete');
+    setTimeout(function () { bookmark.remove(); }, 2000);
     updateHeader();
   });
 }
