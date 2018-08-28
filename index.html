@@ -10,18 +10,26 @@
     <section class='input-section'>
       <h1 class='title'>Linked <img class='logo' src='img/linked-list-logo.svg'> List</h1>
       <form class='input-form'>
-        <input type='text' class='title-input bookmark-input' name='title' placeholder='Website Title' autocomplete='off'>
-        <input type='url' class='url-input bookmark-input' name='URL' placeholder='Website URL' autocomplete='off'>
-        <input type='submit' value='Enter' class='enter-button' disabled='disabled'></input>
+        <input required type='text' class='title-input bookmark-input' name='title' placeholder='Website Title' autocomplete='off'>
+        <input required type='url' class='url-input bookmark-input' name='URL' placeholder='Website URL' autocomplete='off'>
+        <input type='submit' value='Enter' class='enter-button' disabled>
       </form>
     </section>
-    <section class='list-section'>
-      <article class='bookmark'>
-        <h1 class='bookmark-title'>The Website Title</h1>
-        <a class='bookmark-url css-links'>www.thewebsiteurl.com</a>
-        <button type='button' class='bookmark-read css-links css-read-and-delete'>Read</button>
-        <button type='button' class='bookmark-delete css-links css-read-and-delete'>Delete</button>
-      </article>
+    <main class='list-section'>
+      <header>
+        <p>Total: <span id='total-counter'>0</span></p>
+        <p>Unread: <span id='unread-counter'>0</span></p>
+        <p>Read: <span id='read-counter'>0</span></p>
+        <button class='js-clear-all-button' type='button'>Clear All </button>
+      </header>
+      <section class='bookmark-list'>
+        <article class='bookmark'>
+          <h1 class='bookmark-title'>The Website Title</h1>
+          <a class='bookmark-url css-links'>www.thewebsiteurl.com</a>
+          <button type='button' class='bookmark-read css-links css-read-and-delete'>Mark as Unread</button>
+          <button type='button' class='bookmark-delete css-links css-read-and-delete'>Delete</button>
+        </article>
+      </section>
     </section>
     <script src='js/main.js'></script>
   </body>

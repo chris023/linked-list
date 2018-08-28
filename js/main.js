@@ -1,11 +1,15 @@
 const titleInput = document.querySelector('.title-input');
 const urlInput = document.querySelector('.url-input');
 const enterButton = document.querySelector('.enter-button');
-const listSection = document.querySelector('.list-section');
+const bookmarkList = document.querySelector('.bookmark-list');
+const totalCounter = document.querySelector('#total-counter');
+const unreadCounter = document.querySelector('#unread-counter');
+const readCounter = document.querySelector('#read-counter');
+const clearAllButton = document.querySelector('.js-clear-all-button');
 let articleId = 0;
 let readBookmarks = 0;
-let totalBookmarks;
-let unreadBookmarks;
+let totalBookmarks = 0;
+let unreadBookmarks = 0;
 
 titleInput.addEventListener('input', function() {
   if (!!titleInput.value) {
@@ -26,23 +30,22 @@ urlInput.addEventListener('input', function() {
 enterButton.addEventListener('click', function(event){
   newTitle = titleInput.value;
   newUrl = urlInput.value;
-  if (!newTitle || !newUrl) {
-    alert('Please enter a Title and URL for your new bookmark!');
-  } else if (urlInput.checkValidity() === true) {
-    createBookmarkHTML(newTitle, newUrl);
-    event.preventDefault();
+
+  if (urlInput.checkValidity() === true) {
+  createBookmarkHTML(newTitle, newUrl);
+  event.preventDefault();
   }
 });
 
 function createBookmarkHTML(newTitle, newUrl) {
   if (articleId === 0) {
-    listSection.innerHTML = '';
+    bookmarkList.innerHTML = '';
   }
-  listSection.insertAdjacentHTML('beforeend', 
+  bookmarkList.insertAdjacentHTML('afterbegin', 
     `<article class='bookmark' id='bookmark${articleId}'>
       <h1 class='bookmark-title'>${newTitle}</h1>
       <a class='bookmark-url css-links' href="${newUrl}">${newUrl}</a>
-      <button type='button' class='bookmark-read css-links css-read-and-delete' id='read${articleId}'>Unread</button>
+      <button type='button' class='bookmark-read css-links css-read-and-delete' id='read${articleId}'>Mark as Read</button>
       <button type='button' class='bookmark-delete css-links css-read-and-delete' id='delete${articleId}'>Delete</button>
     </article>`);
   createReadListener();
@@ -50,23 +53,25 @@ function createBookmarkHTML(newTitle, newUrl) {
   articleId++;
   totalBookmarks = document.querySelectorAll('article').length;
   unreadBookmarks = totalBookmarks - readBookmarks;
+  updateHeader();
 }
 
 function createReadListener() {
   let readButton = document.querySelector(`#read${articleId}`);
   let bookmark = document.querySelector(`#bookmark${articleId}`);
   readButton.addEventListener('click', function() {
-    if (readButton.innerText === 'Unread') {
+    if (readButton.innerText === 'Mark as Read') {
       bookmark.classList.toggle('read');
-      readButton.innerText = 'Read';
+      readButton.innerText = 'Mark as Unread';
       readBookmarks++;
       unreadBookmarks--;
-    } else if (readButton.innerText === 'Read') {
+    } else if (readButton.innerText === 'Mark as Unread') {
       bookmark.classList.toggle('read');
-      readButton.innerText = 'Unread';
+      readButton.innerText = 'Mark as Read';
       readBookmarks--;
       unreadBookmarks++;
     }
+    updateHeader();
   });
 }
 
@@ -74,8 +79,34 @@ function createDeleteListener() {
   let deleteButton = document.querySelector(`#delete${articleId}`);
   let bookmark = document.querySelector(`#bookmark${articleId}`);
   deleteButton.addEventListener('click', function() {
+    
+    if(this.parentNode.classList.contains('read')){
+      readBookmarks--;
+    }
+    else{
+      unreadBookmarks--;
+    }
+
+    totalBookmarks--;
+
     bookmark.remove();
+
+    updateHeader();
   });
 }
 
+function updateHeader(){
+  totalCounter.innerText = totalBookmarks;
+  unreadCounter.innerText = unreadBookmarks;
+  readCounter.innerText = readBookmarks;
+}
+
+clearAllButton.addEventListener('click', function(event) {
+  bookmarkList.innerHTML = '';
+  totalBookmarks = 0;
+  unreadBookmarks = 0;
+  readBookmarks = 0;
+  updateHeader();
+  event.preventDefault();
+})
 
