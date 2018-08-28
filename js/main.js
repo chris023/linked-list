@@ -37,7 +37,7 @@ function createBookmarkHTML(newTitle, newUrl) {
     `<article class='bookmark' id='bookmark${articleId}'>
       <h1 class='bookmark-title'>${newTitle}</h1>
       <a class='bookmark-url css-links' href="${newUrl}">${newUrl}</a>
-      <button type='button' class='bookmark-read css-links css-read-and-delete' id='read${articleId}'>Read</button>
+      <button type='button' class='bookmark-read css-links css-read-and-delete' id='read${articleId}'>Unread</button>
       <button type='button' class='bookmark-delete css-links css-read-and-delete' id='delete${articleId}'>Delete</button>
     </article>`);
   createReadListener();
@@ -49,7 +49,13 @@ function createReadListener() {
   let readButton = document.querySelector(`#read${articleId}`);
   let bookmark = document.querySelector(`#bookmark${articleId}`);
   readButton.addEventListener('click', function() {
+    if (readButton.innerText === 'Unread') {
+      bookmark.classList.toggle('read');
+      readButton.innerText = 'Read';
+    } else if (readButton.innerText === 'Read') {
     bookmark.classList.toggle('read');
+    readButton.innerText = 'Unread';
+    }
   });
 }
 

@@ -89,10 +89,6 @@ body {
   transition:.5s;
 }
 
-.bookmark-read {
-  transition: .5s;
-}
-
 .bookmark-title {
   color: #455A64;
 }
@@ -136,13 +132,11 @@ body {
 
 .read {
   background-color: #F2F4F4;
-  transition: .5s;
 }
 
 .read .bookmark-read {
   color: #F05A28;
   font-weight: 800;
-  transition: .5s;
 }
 
 @media screen and (max-width: 700px) {
