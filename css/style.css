@@ -28,6 +28,7 @@ header span {
 header p {
   color: #FFF;
   display: inline-block;
+  letter-spacing: .5px;
   font-size: 16px;
   font-weight: 800;
 }
@@ -189,9 +190,62 @@ header button:hover {
   font-weight: 800;
 }
 
+.animate-delete {
+  animation: delete 2s;
+}
+
+.animate-add {
+  animation: add 2s;
+}
+
+@keyframes delete {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(50vw);
+    opacity: 0;
+  }
+}
+
+@keyframes add {
+  0% {
+    transform: translateX(50vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @media screen and (max-width: 800px) {
   body {
     grid-template-columns: 1fr;
   }
+
+  @keyframes delete {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100vw);
+      opacity: 0;
+    }
+  }
+
+  @keyframes add {
+    0% {
+      transform: translateX(100vh);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
 }
 
