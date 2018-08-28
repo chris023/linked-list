@@ -25,7 +25,7 @@ function createBookmarkHTML(newTitle, newUrl) {
     bookmarkList.innerHTML = '';
   }
   bookmarkList.insertAdjacentHTML('afterbegin', 
-    `<article class='bookmark' id='bookmark${articleId}'>
+    `<article class='bookmark animate-add' id='bookmark${articleId}'>
       <h1 class='bookmark-title'>${newTitle}</h1>
       <a class='bookmark-url css-links' href="${newUrl}">${newUrl}</a>
       <button type='button' class='bookmark-read css-links css-read-and-delete' id='read${articleId}'>Mark as Read</button>
@@ -33,13 +33,16 @@ function createBookmarkHTML(newTitle, newUrl) {
     </article>`);
   createReadListener();
   createDeleteListener();
-  articleId++;
   totalBookmarks = document.querySelectorAll('article').length;
   unreadBookmarks = totalBookmarks - readBookmarks;
   updateHeader();
   titleInput.value = '';
   urlInput.value = '';
   checkInput();
+  setTimeout(function () { 
+    document.querySelector(`#bookmark${articleId}`).classList.remove('animate-add'); 
+    articleId++;
+  }, 2000);
 }
 
 function createReadListener() {

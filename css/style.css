@@ -193,6 +193,10 @@ header button:hover {
   animation: delete 2s;
 }
 
+.animate-add {
+  animation: add 2s;
+}
+
 @keyframes delete {
   0% {
     transform: translateX(0);
@@ -201,6 +205,17 @@ header button:hover {
   100% {
     transform: translateX(50vw);
     opacity: 0;
+  }
+}
+
+@keyframes add {
+  0% {
+    transform: translateX(50vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
