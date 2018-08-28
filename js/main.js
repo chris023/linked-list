@@ -23,22 +23,22 @@ enterButton.addEventListener('click', function(event){
   newUrl = urlInput.value;
   if (!newTitle || !newUrl) {
     alert('Please enter a Title and URL for your new bookmark!');
-  } else
-  createBookmarkHTML(newTitle, newUrl);
-  event.preventDefault();
+  } else if (urlInput.checkValidity() === true) {
+    createBookmarkHTML(newTitle, newUrl);
+    event.preventDefault();
+  }
 });
 
 function createBookmarkHTML(newTitle, newUrl) {
-  if(articleId === 0){
+  if (articleId === 0) {
     listSection.innerHTML = '';
   }
-
   listSection.insertAdjacentHTML('beforeend', 
     `<article class='bookmark' id='bookmark${articleId}'>
       <h1 class='bookmark-title'>${newTitle}</h1>
       <a class='bookmark-url css-links' href="${newUrl}">${newUrl}</a>
-      <p class='bookmark-read css-links css-read-and-delete' id='read${articleId}'>Read</p>
-      <p class='bookmark-delete css-links css-read-and-delete' id='delete${articleId}'>Delete</p>
+      <button type='button' class='bookmark-read css-links css-read-and-delete' id='read${articleId}'>Read</button>
+      <button type='button' class='bookmark-delete css-links css-read-and-delete' id='delete${articleId}'>Delete</button>
     </article>`);
   createReadListener();
   createDeleteListener();

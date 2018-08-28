@@ -1,8 +1,8 @@
-*{
+* {
   font-family: 'Open Sans', sans-serif;
 }
 
-body{
+body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   min-height: 100vh;
@@ -121,14 +121,13 @@ body{
 
 .bookmark-read {
   display: inline-block;
-  /* float: left; */
 }
 
 .bookmark-delete {
   float: right;
 }
 
-.css-links:hover{
+.css-links:hover {
   color: #455A64;
   text-decoration: underline;
   text-decoration-color: #FFC107;
@@ -141,7 +140,8 @@ body{
 }
 
 .read .bookmark-read {
-  color: red;
+  color: #F05A28;
+  font-weight: 800;
   transition: .5s;
 }
 
