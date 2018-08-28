@@ -19,7 +19,6 @@ function checkInput() {
   }
 }
 
-
 function createBookmarkHTML(newTitle, newUrl) {
   if (articleId === 0) {
     bookmarkList.innerHTML = '';
@@ -39,7 +38,7 @@ function createBookmarkHTML(newTitle, newUrl) {
   titleInput.value = '';
   urlInput.value = '';
   checkInput();
-  setTimeout(function () { 
+  setTimeout(function() { 
     document.querySelector(`#bookmark${articleId}`).classList.remove('animate-add'); 
     articleId++;
   }, 2000);
@@ -67,7 +66,7 @@ function createReadListener() {
 function createDeleteListener() {
   let deleteButton = document.querySelector(`#delete${articleId}`);
   let bookmark = document.querySelector(`#bookmark${articleId}`);
-  deleteButton.addEventListener('click', function() {
+  deleteButton.addEventListener('click', function(event) {
     if(this.parentNode.classList.contains('read')) {
       readBookmarks--;
     } else {
@@ -75,7 +74,13 @@ function createDeleteListener() {
     }
     totalBookmarks--;
     bookmark.classList.toggle('animate-delete');
-    setTimeout(function () { bookmark.remove(); }, 2000);
+    setTimeout(function() {
+      // let nodes = bookmark.childNodes;
+      // for (var i = 0; i < nodes.length; i++){
+      //   nodes[i].removeEventListener('click', );
+      // }
+      bookmark.remove();
+    }, 1900);
     updateHeader();
   });
 }
