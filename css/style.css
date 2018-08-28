@@ -5,48 +5,60 @@
 body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  min-height: 100vh;
   margin: 0;
+  min-height: 100vh;
 }
 
+
+/* ====== BOOKMARK SECTION HEADER STYLES ====== */
+
+
 header {
-  text-align: center;
+  background-color: #6A7A83;
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
-  background-color: #6a7a83;
+  text-align: center;
+}
+
+header span {
+  color: #FFC107;
 }
 
 header p {
+  color: #FFF;
   display: inline-block;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
-  color: #ffffff;
 }
 
 header button {
-  height: 80%;
-  width: 100px;
-  margin: auto 0;
+  background-color: #FF7C51;
   border: 0;
-  background-color: #ff7c51;
-  color: #ffffff;
-  padding: 5px;
+  color: #FFF;
+  height: 80%;
   font-size: 16px;
   font-weight: 800;
+  margin: auto 0;
   outline: none;
+  padding: 5px;
   transition: .5s;
+  width: 100px;
 }
 
 header button:hover {
-  background-color: #ff571f;
+  background-color: #F05A28;
   cursor: pointer;
 }
 
+
+/* ====== TITLE AND INPUT SECTION STYLES ====== */
+
+
 .title {
-  text-align: center;
   font-size: 60px;
   margin: 0 3%;
+  text-align: center;
 }
 
 .input-form {
@@ -56,11 +68,11 @@ header button:hover {
 }
 
 .input-section {
-  padding: 30% 0;
-  float: left;
-  width: 100%;
   background-color: #455A64;
   color: white;
+  float: left;
+  padding: 30% 0;
+  width: 100%;
 }
 
 .list-section {
@@ -74,27 +86,27 @@ header button:hover {
 }
 
 .enter-button {
-  display: block;
-  margin: 5% auto;
-  min-width: 90%;
+  background-color: #FFC107;
   border: 0;
-  background-color: #ffc107;
-  color: #ffffff;
-  padding: 5px;
+  color: #FFF;
+  display: block;
   font-size: 18px;
   font-weight: 800;
+  min-width: 90%;
+  padding: 5px;
   outline: none;
+  margin: 5% auto;
   transition: .5s;
 }
 
 .enter-button:hover {
-  background-color: #ffd773;
+  background-color: #FFD773;
   cursor: pointer;
   transition: .5s;
 }
 
 .enter-button:disabled {
-  background-color: #ffd773;
+  background-color: #FFD773;
   cursor: auto;
   transition: .5s;
 }
@@ -102,25 +114,29 @@ header button:hover {
 .bookmark-input {
   box-sizing: border-box;
   display: block;
+  font-size: 20px;
   margin: 5% auto;
   min-width: 90%;
-  font-size: 20px;
-  padding: 1% 1% 1% 2%;
   outline: none;
+  padding: 1% 1% 1% 2%;
 }
 
 .bookmark-input::placeholder {
   color: #CCC;
 }
 
+
+/* ====== BOOKMARK CARD STYLES ====== */
+
+
 .bookmark {
-  box-sizing: border-box;
-  background-color: #ffffff;
-  margin: 3% 2%;
-  width: 96%;
+  background-color: #FFF;
   border: solid 2px #607D8B;
+  box-sizing: border-box;
+  margin: 3% 2%;
   padding: 4px 12px;
   transition:.5s;
+  width: 96%;
 }
 
 .bookmark-title {
@@ -128,25 +144,25 @@ header button:hover {
 }
 
 .bookmark-url {
-  display: block;
-  color: #607D8B;
-  padding: 10px 0;
   border-bottom: solid 2px #CFD8DC;
   border-top: solid 2px #CFD8DC;
+  color: #607D8B;
+  display: block;
+  padding: 10px 0;
 }
 
 .css-links{
+  outline: none;
   text-decoration: underline;
   text-decoration-color: #F2F4F4;
-  outline: none;
 }
 
 .css-read-and-delete {
-  font-size: 14px;
-  margin: 4px 0;
+  background-color: transparent;
   border: none;
   color: #455A64;
-  background-color: transparent;
+  font-size: 14px;
+  margin: 4px 0;
 }
 
 .bookmark-read {
@@ -159,9 +175,9 @@ header button:hover {
 
 .css-links:hover {
   color: #455A64;
+  cursor: pointer;
   text-decoration: underline;
   text-decoration-color: #FFC107;
-  cursor: pointer;
 }
 
 .read {
@@ -173,7 +189,7 @@ header button:hover {
   font-weight: 800;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   body {
     grid-template-columns: 1fr;
   }
