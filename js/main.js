@@ -3,19 +3,24 @@ const urlInput = document.querySelector('.url-input');
 const enterButton = document.querySelector('.enter-button');
 const listSection = document.querySelector('.list-section');
 let articleId = 0;
+let readBookmarks = 0;
+let totalBookmarks;
+let unreadBookmarks;
 
 titleInput.addEventListener('input', function() {
   if (!!titleInput.value) {
     enterButton.disabled = false;
-  } else
-  enterButton.disabled = true;
+  } else {
+    enterButton.disabled = true;
+  }
 });
 
 urlInput.addEventListener('input', function() {
   if (!!urlInput.value) {
     enterButton.disabled = false;
-  } else
-  enterButton.disabled = true;
+  } else {
+    enterButton.disabled = true;
+  }
 });
 
 enterButton.addEventListener('click', function(event){
@@ -43,6 +48,8 @@ function createBookmarkHTML(newTitle, newUrl) {
   createReadListener();
   createDeleteListener();
   articleId++;
+  totalBookmarks = document.querySelectorAll('article').length;
+  unreadBookmarks = totalBookmarks - readBookmarks;
 }
 
 function createReadListener() {
@@ -52,9 +59,13 @@ function createReadListener() {
     if (readButton.innerText === 'Unread') {
       bookmark.classList.toggle('read');
       readButton.innerText = 'Read';
+      readBookmarks++;
+      unreadBookmarks--;
     } else if (readButton.innerText === 'Read') {
-    bookmark.classList.toggle('read');
-    readButton.innerText = 'Unread';
+      bookmark.classList.toggle('read');
+      readButton.innerText = 'Unread';
+      readBookmarks--;
+      unreadBookmarks++;
     }
   });
 }
