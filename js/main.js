@@ -8,7 +8,7 @@ const readCounter = document.querySelector('#read-counter');
 const clearAllButton = document.querySelector('.js-clear-all-button');
 let readButton = document.querySelector('.bookmark-read');
 let deleteButton = document.querySelector('.bookmark-delete')
-let articleId = 0;
+let isFirstBookmark = true;
 let readBookmarks = 0;
 let totalBookmarks = 0;
 let unreadBookmarks = 0;
@@ -22,7 +22,7 @@ function checkInputValue() {
 }
 
 function createBookmarkHTML(newTitle, newUrl) {
-  if (articleId === 0) {
+  if (isFirstBookmark) {
     bookmarkList.innerHTML = '';
   }
   bookmarkList.insertAdjacentHTML('afterbegin', 
@@ -41,8 +41,8 @@ function createBookmarkHTML(newTitle, newUrl) {
   setTimeout(function() { 
     let bookmark = document.querySelector('.bookmark')
     bookmark.classList.remove('animate-add'); 
-    articleId++;
   }, 2000);
+  isFirstBookmark = false;
 }
 
 function updateHeader() {
