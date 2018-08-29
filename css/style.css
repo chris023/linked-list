@@ -170,6 +170,10 @@ header button:hover {
   display: inline-block;
 }
 
+.delete {
+  float: right;
+}
+
 .bookmark-delete {
   float: right;
 }
