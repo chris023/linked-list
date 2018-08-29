@@ -8,12 +8,11 @@ const readCounter = document.querySelector('#read-counter');
 const clearAllButton = document.querySelector('.js-clear-all-button');
 let readButton = document.querySelector('.bookmark-read');
 let deleteButton = document.querySelector('.bookmark-delete')
-let articleId = 0;
 let readBookmarks = 0;
 let totalBookmarks = 0;
 let unreadBookmarks = 0;
 
-function checkInput() {
+function checkInputValue() {
   if (!!titleInput.value || !!urlInput.value) {
     enterButton.disabled = false;
   } else {
@@ -22,7 +21,8 @@ function checkInput() {
 }
 
 function createBookmarkHTML(newTitle, newUrl) {
-  if (articleId === 0) {
+  let placeholder = document.querySelector('.placeholder');
+  if (placeholder.classList.contains('placeholder')) {
     bookmarkList.innerHTML = '';
   }
   bookmarkList.insertAdjacentHTML('afterbegin', 
@@ -37,11 +37,10 @@ function createBookmarkHTML(newTitle, newUrl) {
   updateHeader();
   titleInput.value = '';
   urlInput.value = '';
-  checkInput();
+  checkInputValue();
   setTimeout(function() { 
     let bookmark = document.querySelector('.bookmark')
     bookmark.classList.remove('animate-add'); 
-    articleId++;
   }, 2000);
 }
 
@@ -79,9 +78,9 @@ function deleteUnreadBookmark() {
   event.target.parentNode.classList.toggle('animate-delete');
 }
 
-titleInput.addEventListener('input', checkInput);
+titleInput.addEventListener('input', checkInputValue);
 
-urlInput.addEventListener('input', checkInput);
+urlInput.addEventListener('input', checkInputValue);
 
 enterButton.addEventListener('click', function(event){
   newTitle = titleInput.value;
@@ -100,7 +99,7 @@ clearAllButton.addEventListener('click', function(event) {
   updateHeader();
   titleInput.value = '';
   urlInput.value = '';
-  checkInput();
+  checkInputValue();
   event.preventDefault();
 });
 
@@ -123,7 +122,4 @@ bookmarkList.addEventListener('click', function(event) {
     updateHeader();
   }
 });
-
-
-
 
