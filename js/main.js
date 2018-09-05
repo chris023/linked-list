@@ -51,7 +51,7 @@ function updateHeader() {
   readCounter.innerText = readBookmarks;
 }
 
-function markAsRead(event) {
+function markAsRead() {
   event.target.parentNode.classList.toggle('read');
   event.target.innerText = 'Mark as Unread';
   readBookmarks++;
@@ -59,7 +59,7 @@ function markAsRead(event) {
   updateHeader();
 }
 
-function markAsUnread(event) {
+function markAsUnread() {
   event.target.parentNode.classList.toggle('read');
   event.target.innerText = 'Mark as Read';
   readBookmarks--;
@@ -67,13 +67,13 @@ function markAsUnread(event) {
   updateHeader();
 }
 
-function deleteReadBookmark(event) {
+function deleteReadBookmark() {
   readBookmarks--;
   totalBookmarks--;
   event.target.parentNode.classList.toggle('animate-delete');
 }
 
-function deleteUnreadBookmark(event) {
+function deleteUnreadBookmark() {
   unreadBookmarks--;
   totalBookmarks--;
   event.target.parentNode.classList.toggle('animate-delete');
@@ -106,17 +106,17 @@ clearAllButton.addEventListener('click', function(event) {
 
 bookmarkList.addEventListener('click', function(event) {
   if (event.target.classList.contains('bookmark-read') && event.target.innerText === 'Mark as Read') {
-    markAsRead(event);
+    markAsRead();
   } else if (event.target.classList.contains('bookmark-read') && event.target.innerText === 'Mark as Unread') {
-    markAsUnread(event);
+    markAsUnread();
   } else if (event.target.classList.contains('bookmark-delete') && event.target.parentNode.classList.contains('read')) {
-    deleteReadBookmark(event);
+    deleteReadBookmark();
     setTimeout(function() {
         event.target.parentNode.remove();
     }, 1900);
     updateHeader();
   } else if (event.target.classList.contains('bookmark-delete') && !event.target.parentNode.classList.contains('read')) {
-    deleteUnreadBookmark(event);
+    deleteUnreadBookmark();
     setTimeout(function() {
         event.target.parentNode.remove();
     }, 1900);
